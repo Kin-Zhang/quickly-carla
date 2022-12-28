@@ -78,7 +78,7 @@ class App(customtkinter.CTk):
         else:
             self.auto_.configure(text="True")
         self.ego_vehicle.set_autopilot(self.auto_set)
-        log.info("TODO")
+        log.info(f"setting the auto driving to ego vehicle, mode is: {self.auto_set}")
         
 
     def connect_button_event(self):            
