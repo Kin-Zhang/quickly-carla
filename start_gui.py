@@ -2,7 +2,7 @@
 
 # Created: 2022-12-28 15:10
 # Copyright (C) 2022-now, RPL, KTH Royal Institute of Technology
-# Authors: Kin ZHANG kin_eng@163.com
+# Authors: Kin ZHANG  (https://kin-zhang.github.io/)
 
 # This work is licensed under the terms of the MIT license.
 # For a copy, see <https://opensource.org/licenses/MIT>.

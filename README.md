@@ -34,7 +34,7 @@ Test computer and System (py38):
 ```bash
 cd ~/CARLA_0.9.14/PythonAPI
 git clone https://github.com/Kin-Zhang/quickly-carla
-pip install customtkinter glog
+pip install customtkinter glog webbrowser
 python3 quickly-carla/start_gui.py
 ```
 

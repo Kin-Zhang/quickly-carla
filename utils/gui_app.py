@@ -2,7 +2,7 @@
 
 # Created: 2022-12-28 15:10
 # Copyright (C) 2022-now, RPL, KTH Royal Institute of Technology
-# Authors: Kin ZHANG kin_eng@163.com
+# Authors: Kin ZHANG (https://kin-zhang.github.io/)
 
 # This work is licensed under the terms of the MIT license.
 # For a copy, see <https://opensource.org/licenses/MIT>.
@@ -14,6 +14,7 @@ import customtkinter
 import glog as log
 from .global_def import *
 import random
+import webbrowser
 try:
     import carla
 except:
@@ -86,7 +87,8 @@ class App(customtkinter.CTk):
             port_num = int(self.port.get())
             # connect to carla
             self.client = carla.Client(self.host.get(), port_num)
-            self.client.set_timeout(10.0)
+            log.info(f"Trying to connect the CARLA.... may take some time....")
+            self.client.set_timeout(5.0)
             self.world = self.client.get_world()
             self.carla_map = self.world.get_map()
 
@@ -183,7 +185,7 @@ class App(customtkinter.CTk):
 
         # Start setting part
         self.setting_frame = customtkinter.CTkFrame(self)
-        self.setting_frame.grid(row=0, column=1, columnspan=1,padx=(20, 20), pady=(100, 20), sticky="nw")
+        self.setting_frame.grid(row=0, column=1, columnspan=1,padx=(20, 0), pady=(100, 0), sticky="nw")
 
         self.label_sgroup = customtkinter.CTkLabel(master=self.setting_frame, text="Set spectator to ego", font=customtkinter.CTkFont(size=15))
         self.label_sgroup.grid(row=0, column=1, padx=(10, 0), pady=(10, 10))
@@ -214,7 +216,11 @@ class App(customtkinter.CTk):
                                                         values=["Map", "Velocity-time", "Throttle-time"])
         self.plot_mode.grid(row=5, column=3, padx=(20, 10), pady=(10, 10))
         # End setting part
+        self.entry = customtkinter.CTkLabel(self, text="This tool firstly developed by Kin, Star this repo: https://github.com/Kin-Zhang/quickly-carla, Click me")
+        self.entry.grid(row=3, column=1, columnspan=2, padx=(20, 0), pady=(20, 20), sticky="nsew")
+        self.entry.bind("<Button-1>", lambda e: webbrowser.open_new("https://github.com/Kin-Zhang/quickly-carla"))
         self.disable_all_window()
+
     def init_var(self):
         self.draw_set = False
         self.draw_all = False
@@ -252,7 +258,7 @@ class App(customtkinter.CTk):
         self.textbox.configure(state="disabled")
 
     def connect_text(self, port_num, vehicle_num, town_name):
-        log.info(f"num is {port_num}")
+        log.info(f"port num is {port_num}")
         self.connect_textbox.configure(state="normal")
         self.connect_textbox.delete("0.0","end")
         self.connect_textbox.insert("0.0", f"Town Map: {town_name.split('/')[-1]}\nVehicle num: {vehicle_num}")  # insert at line 0 character 0
