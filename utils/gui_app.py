@@ -101,7 +101,8 @@ class App(customtkinter.CTk):
             log.error(f"{bc.FAIL}Please insert valid port num! It's a number! default is 2000{bc.ENDC}")
     
     def print_log_info(self):
-        log.info("TODO")
+        pose = self.ego_vehicle.get_transform()
+        print(f"x, y, z: {pose.location.x, pose.location.y, pose.location.z}, roll, pitch, yaw: {pose.rotation.roll, pose.rotation.pitch, pose.rotation.yaw}\n")
 
     def plot_figure_car(self):
         log.info("TODO, working hard by Kin. Welcome to contribute!")
@@ -204,7 +205,7 @@ class App(customtkinter.CTk):
 
         self.debug_sgroup = customtkinter.CTkLabel(master=self.setting_frame, text="Print log info", font=customtkinter.CTkFont(size=15))
         self.debug_sgroup.grid(row=3, column=1, padx=(10, 0), pady=(10, 10))
-        self.print_info = customtkinter.CTkButton(self.setting_frame, text="Print",command=self.set_print_info)
+        self.print_info = customtkinter.CTkButton(self.setting_frame, text="Print",command=self.print_log_info)
         self.print_info.grid(row=3, column=3, padx=(20, 10), pady=(10, 10))
 
         self.plot_sgroup = customtkinter.CTkLabel(master=self.setting_frame, text="Plot figure", font=customtkinter.CTkFont(size=15))
