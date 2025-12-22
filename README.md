@@ -2,7 +2,7 @@
 
 Debug Tools for CARLA
 
-![image](https://user-images.githubusercontent.com/35365764/209858504-7b4e4738-ddb1-47a3-aa80-9e1e59e8763c.png)
+<img width="1170" height="813" alt="image" src="https://github.com/user-attachments/assets/dbccbc29-2a8f-4250-9019-51e45add395f" />
 
 Firstly! Please git clone this repo  `${YOU_CARLA_PATH}/PythonAPI`
 
@@ -55,19 +55,29 @@ Now, you can try everything like video shown at beginning.
 ## Other infos
 
 ### Issue
-1. tkgui cannot show great font.
 
-   For some reasons https://github.com/corpnewt/ProperTree/issues/86, https://github.com/ContinuumIO/anaconda-issues/issues/776, https://github.com/TomSchimansky/CustomTkinter/issues/206:
 
-    ```bash
-    conda remove tk
-    ```
-    But it will cause [another problem](https://stackoverflow.com/questions/58758447/how-to-fix-module-platform-has-no-attribute-linux-distribution-when-instal), fixed by
-    ```bash
-    sudo apt remove python3-pip
-    sudo python3.8 -m easy_install pip
-    ```
+**1) tkgui cannot show great font.**
 
+For some reasons https://github.com/corpnewt/ProperTree/issues/86, https://github.com/ContinuumIO/anaconda-issues/issues/776, https://github.com/TomSchimansky/CustomTkinter/issues/206:
+
+```bash
+conda remove tk
+```
+But it will cause [another problem](https://stackoverflow.com/questions/58758447/how-to-fix-module-platform-has-no-attribute-linux-distribution-when-instal), fixed by
+```bash
+sudo apt remove python3-pip
+sudo python3.8 -m easy_install pip
+```
+
+If you are using conda, then solved by, [ref](https://github.com/ContinuumIO/anaconda-issues/issues/6833)
+```bash
+cd $CONDA_PREFIX/lib
+mv libtk8.6.so libtk8.6.so.bak
+mv libtcl8.6.so libtcl8.6.so.bak
+ln -s /usr/lib/x86_64-linux-gnu/libtk8.6.so libtk8.6.so
+ln -s /usr/lib/x86_64-linux-gnu/libtcl8.6.so libtcl8.6.so
+```
 
 
 ### Acknowledgement

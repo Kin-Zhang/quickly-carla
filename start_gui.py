@@ -2,13 +2,13 @@
 
 # Created: 2022-12-28 15:10
 # Copyright (C) 2022-now, RPL, KTH Royal Institute of Technology
-# Authors: Kin ZHANG  (https://kin-zhang.github.io/)
+# Authors: Qingwen Zhang  (https://kin-zhang.github.io/)
 
 # This work is licensed under the terms of the MIT license.
 # For a copy, see <https://opensource.org/licenses/MIT>.
 
 
-from utils.global_def import *
+from utils import bc
 from utils.gui_app import App
 import glog as log
 
@@ -22,8 +22,7 @@ if __name__ == "__main__":
 
         # reference: https://stackoverflow.com/a/459131/9281669
         def task_in_loop():
-            app.run_spectator()
-            app.run_bbx()
+            app.custom_looprun()
             app.after(time_loop_ms, task_in_loop)
         app.after(time_loop_ms, task_in_loop)
 
