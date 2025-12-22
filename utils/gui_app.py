@@ -14,7 +14,11 @@ import customtkinter
 import glog as log
 from .global_def import *
 import random
-import webbrowser
+try:
+    import webbrowser
+except:
+    webbrowser = None
+    log.warn("no webbrowser module loaded, cannot open link when clicked")
 try:
     import carla
 except:
@@ -218,7 +222,8 @@ class App(customtkinter.CTk):
         # End setting part
         self.entry = customtkinter.CTkLabel(self, text="This tool firstly developed by Kin, Star this repo: https://github.com/Kin-Zhang/quickly-carla, Click me")
         self.entry.grid(row=3, column=1, columnspan=2, padx=(20, 0), pady=(20, 20), sticky="nsew")
-        self.entry.bind("<Button-1>", lambda e: webbrowser.open_new("https://github.com/Kin-Zhang/quickly-carla"))
+        if webbrowser is not None:
+            self.entry.bind("<Button-1>", lambda e: webbrowser.open_new("https://github.com/Kin-Zhang/quickly-carla"))
         self.disable_all_window()
 
     def init_var(self):
