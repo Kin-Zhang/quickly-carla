@@ -83,7 +83,7 @@ class App(customtkinter.CTk):
         if len(hero_vehicles) > 0:
             self.ego_vehicle = random.choice(hero_vehicles)
             self.hero_transform = self.ego_vehicle.get_transform()
-            log.info(f"{bc.OKGREEN}Select from length:{len(hero_vehicles)}, find ego car id:{self.ego_vehicle.id}{bc.ENDC}")
+            log.info(f"Find ego car id:{self.ego_vehicle.id}.")
             self.search_role_text()
             self.enable_all_window()
         else:

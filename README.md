@@ -54,6 +54,10 @@ Now, you can try everything like video shown at beginning.
 
 ## Other infos
 
+Note:
+1) Town12 is not supported yet at <Plot Map> button, because the map is toooooooo large. TODO: small maps around ego vehicle only?
+2) 
+
 ### Issue
 
 
